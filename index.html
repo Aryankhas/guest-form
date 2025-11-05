@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel Guest Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      text-align: center;
+      padding: 40px;
+    }
+    h2 {
+      color: #333;
+    }
+    form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    input, select {
+      width: 90%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #1db954;
+    }
+  </style>
+</head>
+<body>
+  <h2>Guest Registration Form</h2>
+  <form id="guestForm">
+    <input type="text" name="name" placeholder="Full Name" required><br>
+    <input type="text" name="country" placeholder="Country" aawwwwwwwwww is arequired><br>
+    <select name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select><br>
+    <input type="text" name="contact" placeholder="Contact Number" required><br>
+    <input type="number" name="age" placeholder="Age" required><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Replace this with your Google Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyLbpNSOjWGjs07V8nueQOvcMkfmdfFnc_T21YeYR9O1tIg8w4Cqzu-TaiPiTDX3raQxg/exec';
+    const form = document.getElementById('guestForm');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      .then(res => alert("Guest info saved successfully!"))
+      .catch(err => alert("Error saving data: " + err.message));
+      form.reset();
+    });
+  </script>
+</body>
+</html>
